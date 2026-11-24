@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0705">
+<title>🎪 พีรบูรณ์มาร์เก็ต | Peeraboon Night Market</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap');
+:root{--bg:#0b0705;--card:#19100d;--red:#ff3e3e;--orange:#ff7700;--gold:#ffc46b;--text:#fff0dc;--muted:#a68c7b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Kanit',sans-serif;background:var(--bg);color:var(--text);padding-bottom:110px;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 50% 0%,rgba(255,62,62,.17),transparent 60%),radial-gradient(ellipse at 100% 70%,rgba(255,119,0,.08),transparent 50%)}
+header{position:relative;overflow:hidden;padding:30px 15px 35px;text-align:center;background:linear-gradient(180deg,rgba(50,8,5,.97),rgba(11,7,5,.98));border-bottom:2px solid var(--orange);box-shadow:0 8px 35px #ff3e3e25}
+.lanterns{display:flex;justify-content:space-around;font-size:29px;margin-bottom:12px;animation:lantern 2s infinite alternate}
+@keyframes lantern{from{filter:drop-shadow(0 0 4px red)}to{filter:drop-shadow(0 0 16px orange)}}
+.logo{display:inline-block;padding:12px 24px;border:3px double var(--gold);background:linear-gradient(135deg,#321009,#170805);box-shadow:0 0 25px #ff3e3e55;border-radius:8px}
+.logo h1{color:var(--gold);font-size:clamp(25px,7vw,38px);font-weight:800;text-shadow:0 0 15px #ff3e3e}
+.logo p{font-size:11px;letter-spacing:2px;color:#ffb56b}
+.slogan{margin-top:17px;color:#ff9a69;font-size:13px;line-height:1.8}
+.open-status{display:inline-block;margin-top:15px;padding:5px 14px;border:1px solid #ff3e3e;border-radius:30px;color:#ff6868;font-size:11px;background:#ff3e3e12}
+.ticker{background:#250b08;color:var(--gold);padding:9px 0;overflow:hidden;white-space:nowrap;border-bottom:1px solid #602018;font-size:12px}
+.ticker span{display:inline-block;padding-left:100%;animation:scroll 22s linear infinite}
+@keyframes scroll{to{transform:translateX(-100%)}}
+.container{max-width:1100px;margin:auto;padding:20px 13px}
+.section-heading{margin:8px 0 16px}.section-heading h2{color:var(--gold);font-size:21px}.section-heading p{color:var(--muted);font-size:12px}
+.categories{display:flex;gap:8px;overflow-x:auto;padding:4px 0 15px;scrollbar-width:none}.categories::-webkit-scrollbar{display:none}
+.cat-btn{flex-shrink:0;border:1px solid #663022;color:#d6b8a3;background:#1c100d;padding:9px 14px;border-radius:25px;font-family:inherit;font-size:12px;cursor:pointer;transition:.2s}
+.cat-btn.active,.cat-btn:hover{background:linear-gradient(135deg,var(--red),var(--orange));border-color:transparent;color:white;box-shadow:0 0 15px #ff3e3e55}
+.product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.product-card{position:relative;overflow:hidden;background:linear-gradient(145deg,#21130f,#120b09);border:1px solid #4a2519;border-radius:13px;transition:.25s}
+.product-card:hover{border-color:var(--orange);transform:translateY(-3px);box-shadow:0 5px 20px #ff3e3e25}
+.product-visual{height:120px;display:flex;align-items:center;justify-content:center;font-size:65px;background:radial-gradient(circle,#562016 0%,#1c0c08 75%);position:relative}
+.badge{position:absolute;top:8px;left:7px;font-size:9px;padding:4px 8px;border-radius:20px;background:var(--red);color:white;box-shadow:0 0 10px #ff3e3e66}
+.product-content{padding:11px}.product-name{font-size:13px;line-height:1.5;font-weight:600;min-height:40px;color:#ffe1c0}
+.owner{font-size:10px;color:var(--orange);margin:4px 0}
+.description{font-size:10px;line-height:1.7;color:#b69b88;min-height:67px}
+.price{font-size:18px;font-weight:700;color:#ff9b42;margin:8px 0}.price small{font-size:10px;color:#b69b88;font-weight:400}
+.buy-btn{width:100%;padding:9px 3px;border:none;border-radius:7px;background:linear-gradient(135deg,#ff3e3e,#d34c00);color:white;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer}
+.buy-btn:active{transform:scale(.96)}
+.cart-bar{position:fixed;bottom:0;left:0;width:100%;z-index:50;background:rgba(19,10,7,.97);border-top:2px solid var(--orange);box-shadow:0 -5px 25px #ff3e3e30;padding:12px 15px;backdrop-filter:blur(12px)}
+.cart-inner{max-width:900px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.cart-info{display:flex;flex-direction:column}.cart-info strong{color:var(--gold);font-size:13px}.cart-info span{color:#ff8b48;font-size:17px;font-weight:700}
+.cart-actions{display:flex;gap:7px}
+.clear-btn,.checkout-btn{border:none;font-family:inherit;border-radius:8px;cursor:pointer;font-size:11px;padding:11px 12px}
+.clear-btn{color:#ff8585;background:#321310;border:1px solid #79312b}
+.checkout-btn{color:white;font-weight:700;background:linear-gradient(135deg,#ff3e3e,#ff7700);box-shadow:0 0 12px #ff3e3e55}
+.checkout-btn:disabled{opacity:.4;cursor:not-allowed}
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.85);padding:15px}
+.modal.show{display:flex}
+.receipt{width:100%;max-width:390px;max-height:85vh;overflow-y:auto;background:#f5e3c5;color:#35170d;padding:22px 18px;border-radius:8px;box-shadow:0 0 35px #ff3e3e66;animation:pop .25s ease}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+.receipt h2{text-align:center;font-size:23px}.receipt .sub{text-align:center;font-size:11px;color:#79402b;margin-bottom:14px}
+.receipt-line{border-top:1px dashed #a57b5b;margin:10px 0}
+.receipt-item{display:flex;justify-content:space-between;gap:8px;font-size:12px;padding:5px 0}
+.receipt-total{display:flex;justify-content:space-between;font-size:19px;font-weight:800;margin:15px 0}
+.receipt-message{text-align:center;background:#f0c99f;padding:12px;border-radius:7px;font-size:12px;line-height:1.8}
+.receipt-actions{display:flex;gap:8px;margin-top:15px}.receipt-actions button{flex:1;border:none;padding:11px;border-radius:7px;font-family:inherit;cursor:pointer;font-weight:600}
+.close-btn{background:#d8c0a4;color:#35170d}.confirm-btn{background:#a82b16;color:white}
+.empty{grid-column:1/-1;text-align:center;padding:35px 10px;color:var(--muted);font-size:13px}
+footer{text-align:center;padding:30px 15px 20px;color:#75594a;font-size:10px;line-height:2}
+footer strong{color:var(--orange)}
+@media(min-width:650px){.product-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.product-visual{height:160px;font-size:85px}.product-name{font-size:15px}.description{font-size:12px;min-height:65px}}
+@media(max-width:350px){.product-grid{gap:7px}.product-content{padding:8px}.product-visual{height:95px;font-size:52px}.cart-actions{gap:4px}.clear-btn,.checkout-btn{padding:10px 7px;font-size:10px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="lanterns"><span>🏮</span><span>🏮</span><span>🏮</span><span>🏮</span></div>
+  <div class="logo"><h1>🎪 พีรบูรณ์มาร์เก็ต</h1><p>PEERABOON NIGHT MARKET</p></div>
+  <div class="slogan">แหล่งรวมของดีของกาวที่สุดในพระนคร<br>(โดยสภานักเรียนน้ำเงี่ยนคุมตลาด)</div>
+  <div class="open-status">🔴 ตลาดเปิดแล้ว | ไม่มีใบเสร็จ ไม่มีความผิด</div>
+</header>
+<div class="ticker"><span>🏮 ยินดีต้อนรับสู่ตลาดมืดพระนคร 🏮 ของดีมีทุกแผง ของแพงมีทุกซอย ระวังเจ้าพ่อพีรบูรณ์เก็บค่าคุ้มครอง 🔥 ซื้อวันนี้พรุ่งนี้ค่อยคิดเงิน!</span></div>
+<main class="container">
+  <div class="section-heading"><h2>🔥 แผงสินค้าต้องห้าม</h2><p>คัดสรรโดยสภาตลาดมืด ของดีระดับตำนานแห่งพระนคร</p></div>
+  <div class="categories" id="categories">
+    <button class="cat-btn active" data-cat="all">สินค้าทั้งหมด</button>
+    <button class="cat-btn" data-cat="water">น้ำสูตรพีรบูรณ์</button>
+    <button class="cat-btn" data-cat="council">สภาตลาดมืด</button>
+    <button class="cat-btn" data-cat="secret">ภาพลับ&amp;บันทึกแฉะ</button>
+  </div>
+  <div class="product-grid" id="productGrid"></div>
+</main>
+<footer><strong>🎪 PEERABOON MARKET © 2026</strong><br>ตลาดมืดแห่งพระนคร | บริหารงานโดยสภานักเรียน<br>ทุกสินค้าเป็นเรื่องสมมติในจักรวาลโคลนติดล้อ<br>โปรดใช้วิจารณญาณในการซื้อสินค้า 😂</footer>
+<div class="cart-bar">
+  <div class="cart-inner">
+    <div class="cart-info"><strong>🛒 ตะกร้าตลาดมืด</strong><span id="cartTotal">฿0</span><small id="cartCount" style="color:#aa8b78;font-size:10px">0 รายการ</small></div>
+    <div class="cart-actions"><button class="clear-btn" onclick="clearCart()">🗑 ล้างตะกร้า</button><button class="checkout-btn" id="checkoutBtn" onclick="checkout()" disabled>🧾 เช็คบิลด่วน!</button></div>
+  </div>
+</div>
+<div class="modal" id="receiptModal">
+  <div class="receipt">
+    <h2>🏮 ใบเสร็จตลาดมืด</h2><p class="sub">PEERABOON MARKET OFFICIAL RECEIPT</p>
+    <div class="receipt-line"></div><div id="receiptItems"></div><div class="receipt-line"></div>
+    <div class="receipt-total"><span>ยอดสุทธิ</span><span id="receiptTotal">฿0</span></div>
+    <div class="receipt-message">🎉 ขอขอบพระคุณที่อุดหนุนตลาดมืด!<br>ส่งตรงถึงห้องพักท่านโดยไม่โดนครูหอจับแน่นอน!<br><strong>เจ้าพ่อพีรบูรณ์รับประกันความกาว</strong><br>😂🏮🔥</div>
+    <div class="receipt-actions"><button class="close-btn" onclick="closeReceipt()">ปิดใบเสร็จ</button><button class="confirm-btn" onclick="finishOrder()">รับทราบ!</button></div>
+  </div>
+</div>
+<script>
+const products=[
+{id:1,name:"น้ำควยพีรบูรณ์ สูตรออริจินัล",owner:"เจ้าพ่อพีรบูรณ์",price:150,emoji:"🧪",badge:"🔥 ตัวท็อป",category:"water",description:"สูตรเข้มข้นพิเศษของเจ้าพ่อพีรบูรณ์ ปลุกพลังความกาวจนลืมสมุดบัญชี"},
+{id:2,name:"น้ำควยพีรบูรณ์ เกรดพรีเมียม",owner:"ของภัทริศ",price:299,emoji:"🍶",badge:"💦 ซอยแตก",category:"water",description:"ผลผลิตคัดสรรพิเศษของภัทริศ ผ่านกรรมวิธีปรุงสูตรลับกลางตลาดมืด"},
+{id:3,name:"สเปรย์ว่าวพุ่งกระฉูด",owner:"ของชนกันต์",price:120,emoji:"🧴",badge:"🚀 พุ่งแรง",category:"water",description:"สูตรสดใหม่ชักด้วยความเร็วแสงโดยชนกันต์ พุ่งแรงสะใจไม่ต้องรอนาน"},
+{id:4,name:"โลชั่นแฉะเยิ้มคาแผง",owner:"ของอภิชัย",price:180,emoji:"🫧",badge:"💧 ของมันต้องมี",category:"water",description:"โลชั่นสูตรลื่นพิเศษจากอภิชัย เพื่อความลื่นไหลทุกกระบวนท่า"},
+{id:5,name:"น้ำสูตรคัดเกรดสภา",owner:"ของธนกฤต",price:250,emoji:"👑",badge:"🏛️ สภารับรอง",category:"council",description:"ลงทะเบียนคัดระดับความเข้มข้นโดยเลขาธนกฤต ผู้เชี่ยวชาญด้านแฟชั่นจีสตริงลูกไม้"},
+{id:6,name:"แผ่นบันทึก 'รูแฉะกลางพระนคร'",owner:"ของวชิรขวัญ",price:350,emoji:"📀",badge:"🕵️ ซุ่มแอบ",category:"secret",description:"บันทึกเหตุการณ์สุดฉาว เบื้องหลังข่าวลือและวีรกรรมลับแห่งพระนคร ฉบับสมมติ"},
+{id:7,name:"บัตรคอร์สเรียนควงสว่าน",owner:"ของธนวัฒน์",price:500,emoji:"🛠️",badge:"⚡ ขั้นเทพ",category:"council",description:"คอร์สฝึกควงเอวควงสว่านสูตรธนวัฒน์ หมุนจนเวียนหัว เก็บค่าน้ำเข้าคลังสภา"},
+{id:8,name:"แป้งร่ำกลิ่นหอมยั่วสวาท",owner:"ของมุกและปุณยวีร์",price:99,emoji:"🌸",badge:"🌹 กลิ่นอันตราย",category:"council",description:"ฉีดหรือทาแล้วหอมฟุ้งจนเสมียนและสายหื่นในกรมต้องเดินตามกันเป็นพรวน"}
+];
+let cart={};let currentCategory="all";
+function renderProducts(){
+ const grid=document.getElementById("productGrid");
+ const filtered=products.filter(p=>currentCategory==="all"||p.category===currentCategory);
+ if(!filtered.length){grid.innerHTML='<div class="empty">ไม่มีสินค้าในแผงนี้ 🏮</div>';return}
+ grid.innerHTML=filtered.map(p=>`
+ <div class="product-card"><div class="product-visual"><span class="badge">${p.badge}</span>${p.emoji}</div>
+ <div class="product-content"><div class="product-name">${p.name}</div><div class="owner">👤 ${p.owner}</div>
+ <div class="description">${p.description}</div><div class="price">฿${p.price.toLocaleString("th-TH")} <small>/ ชิ้น</small></div>
+ <button class="buy-btn" onclick="addToCart(${p.id})">🛒 หยิบลงตะกร้า</button></div></div>`).join("");
+}
+function addToCart(id){cart[id]=(cart[id]||0)+1;updateCart();const button=document.querySelector(`[onclick="addToCart(${id})"]`);if(button){const old=button.innerText;button.innerText="✅ ลงตะกร้าแล้ว!";setTimeout(()=>button.innerText=old,700)}}
+function updateCart(){
+ let total=0,count=0;
+ Object.keys(cart).forEach(id=>{const p=products.find(x=>x.id===Number(id));if(!p)return;total+=p.price*cart[id];count+=cart[id]});
+ document.getElementById("cartTotal").innerText="฿"+total.toLocaleString("th-TH");
+ document.getElementById("cartCount").innerText=count+" ชิ้นในตะกร้า";
+ document.getElementById("checkoutBtn").disabled=count===0;
+}
+function clearCart(){if(!Object.keys(cart).length){alert("ตะกร้าว่างอยู่แล้วพ่อคุณ 😂");return}if(confirm("แน่ใจหรือไม่ว่าจะล้างตะกร้าทั้งหมด?")){cart={};updateCart()}}
+document.querySelectorAll(".cat-btn").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".cat-btn").forEach(b=>b.classList.remove("active"));button.classList.add("active");currentCategory=button.dataset.cat;renderProducts()}));
+function checkout(){
+ let total=0,html="";
+ Object.keys(cart).forEach(id=>{const p=products.find(x=>x.id===Number(id));if(!p||cart[id]<=0)return;const subtotal=p.price*cart[id];total+=subtotal;html+=`<div class="receipt-item"><span>${p.emoji} ${p.name}<br><small>จำนวน ${cart[id]} ชิ้น</small></span><strong>฿${subtotal.toLocaleString("th-TH")}</strong></div>`});
+ if(!html)return;
+ document.getElementById("receiptItems").innerHTML=html;
+ document.getElementById("receiptTotal").innerText="฿"+total.toLocaleString("th-TH");
+ document.getElementById("receiptModal").classList.add("show");
+}
+function closeReceipt(){document.getElementById("receiptModal").classList.remove("show")}
+function finishOrder(){alert("🏮 สภาตลาดมืดรับทราบคำสั่งซื้อแล้ว!\n\nขอบพระคุณที่อุดหนุนเจ้าพ่อพีรบูรณ์ 😂\n\nหมายเหตุ: นี่เป็นระบบสาธิต ไม่มีการจัดส่งสินค้าจริง");cart={};updateCart();closeReceipt()}
+document.getElementById("receiptModal").addEventListener("click",e=>{if(e.target===e.currentTarget)closeReceipt()});
+renderProducts();updateCart();
+</script>
+</body>
+</html>
